@@ -10,23 +10,24 @@ use function PhpParser\filesInDir;
 
 class TagsController extends Controller
 {
+    //contruct for auth
     public function __construct()
     {
         $this->middleware('auth');
     }
-
+    //function show us list of tags
     public function index()
     {
         $tags = Tag::all();
 
         return view('tags.tags',['tags'=>$tags]);
     }
-
+    //function redirect us to tags.create page
     public function create()
     {
         return view('tags.create');
     }
-
+    //function for creating new tag and write it into BD
     public function store(Request $request)
     {
         $tag = new Tag;
@@ -36,6 +37,7 @@ class TagsController extends Controller
 
         return redirect()->route('tags.index');
     }
+    //function for geting 1 tag by  ID and all its tasks
     public function get($id)
     {
         $tag = Tag::all()->find($id);
