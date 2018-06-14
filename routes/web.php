@@ -14,3 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/tasks/create','TasksController@create')->name('tasks.create');
+Route::post('/tasks/store','TasksController@store')->name('tasks.store');
+Route::get('/tasks/get/{any}','TasksController@get')->name('tasks.get');
+Route::get('/tasks', 'TasksController@index')->name('tasks.index');
+
+Route::get('/tags/create','TagsController@create')->name('tags.create');
+Route::post('tags/store','TagsController@store')->name('tags.store');
+Route::get('tags/get/{any}','TagsController@get')->name('tags.get');
+Route::get('/tags','TagsController@index')->name('tags.index');
+
